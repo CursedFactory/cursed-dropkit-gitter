@@ -2,7 +2,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildScopedDirectories, createDropkitPlugin } from "cursed-dropkit";
 
-export type CreateTemplateDropkitPluginOptions = {
+export type CreateGitterDropkitPluginOptions = {
   service?: string;
   namespace?: string;
   includeGlobal?: boolean;
@@ -10,19 +10,19 @@ export type CreateTemplateDropkitPluginOptions = {
   summaryToolName?: string | false;
 };
 
-/// Create a ready-to-customize dropkit plugin using this package defaults.
-export function createTemplateDropkitPlugin(options: CreateTemplateDropkitPluginOptions = {}) {
+/// Create a git-focused dropkit plugin using package defaults.
+export function createGitterDropkitPlugin(options: CreateGitterDropkitPluginOptions = {}) {
   const packageRoot = dirname(fileURLToPath(import.meta.url));
   const pluginRootDir = join(packageRoot, "files");
 
   return createDropkitPlugin({
-    service: options.service ?? "dropkit-template",
+    service: options.service ?? "dropkit-gitter",
     summaryToolName: options.summaryToolName,
     directories: (root) =>
       buildScopedDirectories({
         pluginRootDir,
         root,
-        namespace: options.namespace ?? "dropkit-template",
+        namespace: options.namespace ?? "dropkit-gitter",
         includeGlobal: options.includeGlobal,
         includeProject: options.includeProject,
       }),

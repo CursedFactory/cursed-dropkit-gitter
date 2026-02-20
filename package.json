@@ -1,7 +1,7 @@
 {
-  "name": "@cursed-factory/dropkit-template",
+  "name": "@cursed-factory/dropkit-gitter",
   "version": "0.1.0",
-  "description": "Template dropkit package with agent/command/skill skeletons for OpenCode.",
+  "description": "Dropkit package for git and GitHub workflows with gitter-prefixed agents, commands, and skills.",
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
@@ -31,10 +31,11 @@
   "keywords": [
     "opencode",
     "dropkit",
-    "agent",
-    "command",
-    "skill",
-    "template"
+    "git",
+    "github",
+    "commit",
+    "pull-request",
+    "gitter"
   ],
   "publishConfig": {
     "access": "public"
