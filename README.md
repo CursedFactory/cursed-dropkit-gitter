@@ -49,16 +49,50 @@ Imported from `cursed-fab` guidance and applied in git workflows:
 
 ## Use in OpenCode plugin config
 
+Add the package name directly to your `opencode.json` plugin list.
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["@cursed-factory/dropkit-gitter"]
+}
+```
+
+The package root exports `GitterDropkitPlugin`, so OpenCode can load it directly from npm.
+
+## Copyable agent prompts
+
+Use these prompts if you want an agent to install or uninstall the plugin in your global OpenCode config.
+
+### Install globally
+
+```text
+Add `@cursed-factory/dropkit-gitter` to the `plugin` array in `~/.config/opencode/opencode.json`.
+If the file does not exist, create it with the OpenCode schema and a `plugin` array.
+If the `plugin` array does not exist, add it.
+Preserve any existing config entries and avoid duplicates.
+```
+
+### Uninstall globally
+
+```text
+Remove `@cursed-factory/dropkit-gitter` from the `plugin` array in `~/.config/opencode/opencode.json`.
+If the package is not present, leave the config unchanged.
+Preserve all other config entries.
+```
+
+## Customize the plugin manually
+
+If you want to override `service`, `namespace`, or inclusion flags, import the factory from the subpath instead.
+
 ```ts
-import { createGitterDropkitPlugin } from "@cursed-factory/dropkit-gitter";
+import { createGitterDropkitPlugin } from "@cursed-factory/dropkit-gitter/plugin";
 
 export const GitterPlugin = createGitterDropkitPlugin({
   service: "dropkit-gitter",
   namespace: "dropkit-gitter",
 });
 ```
-
-Then register that plugin in your `opencode.json` plugin list.
 
 ## Scripts
 
